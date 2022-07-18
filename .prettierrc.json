@@ -1,6 +1,6 @@
 {
-    "endOfLine": "lf",
-    "printWidth": 120,
-    "arrowParens": "avoid",
-    "trailingComma": "none"
+  "endOfLine": "lf",
+  "printWidth": 120,
+  "arrowParens": "avoid",
+  "trailingComma": "none"
 }
