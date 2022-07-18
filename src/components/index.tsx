@@ -23,7 +23,7 @@ class IndexPage extends React.Component {
     }
     mounted: boolean = false;
     
-    componentWillMount() { this.mounted = true; }
+    UNSAFE_componentWillMount() { this.mounted = true; }
     componentWillUnmount() { this.mounted = false; }
     constructor(props: any) {
         super(props);
