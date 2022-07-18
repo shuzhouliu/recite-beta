@@ -8,45 +8,51 @@ import React from "react";
 import poems from "./poems.tsx";
 
 type StateType = {
-  poem_text: string;
-  poem_origin: string;
+    poem_text: string;
+    poem_origin: string;
 };
 
 interface IndexPage {
-  state: StateType;
+    state: StateType;
 }
 
 class IndexPage extends React.Component {
-  constructor(props: any) {
-    super(props);
-    var get_poem_attribute = props.get;
-    this.state = {
-      poem_text: "",
-      poem_origin: ""
-    };
-    if (get_poem_attribute === "random") {
-      // rnd between [0, poems.length)
-      let rnd: number = Math.floor(Math.random() * poems.length);
-      this.setState({
-        poem_text: poems[rnd].poem_text,
-        poem_origin: poems[rnd].poem_origin
-      });
-    } else {
-      this.setState({
-        poem_text: poems[get_poem_attribute].poem_text,
-        poem_origin: poems[get_poem_attribute].poem_origin
-      });
+    state: StateType = {
+        poem_text: "",
+        poem_origin: ""
     }
-  }
-  render(): React.ReactNode {
-    return (
-      <>
-        {this.state.poem_text}
-        <br />
-        ——{this.state.poem_origin}
-      </>
-    );
-  }
+    mounted: boolean = false;
+    
+    componentWillMount() { this.mounted = true; }
+    componentWillUnmount() { this.mounted = false; }
+    constructor(props: any) {
+        super(props);
+        if (this.mounted) {
+            var get_poem_attribute = props.get;
+            if (get_poem_attribute === "random") {
+                // rnd between [0, poems.length)
+                let rnd: number = Math.floor(Math.random() * poems.length);
+                this.setState({
+                    poem_text: poems[rnd].poem_text,
+                    poem_origin: poems[rnd].poem_origin
+                });
+            } else {
+                this.setState({
+                    poem_text: poems[get_poem_attribute].poem_text,
+                    poem_origin: poems[get_poem_attribute].poem_origin
+                });
+            }
+        }
+    }
+    render(): React.ReactNode {
+        return (
+            <>
+                {this.state.poem_text}
+                <br />
+                ——{this.state.poem_origin}
+            </>
+        );
+    }
 }
 
 export { IndexPage };

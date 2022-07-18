@@ -11,12 +11,16 @@ import { IndexPage } from "./components/index.tsx";
 import "./index.css";
 
 class App extends React.Component {
+  constructor(props: any) {
+    super(props);
+    this.state = {};
+  }
   render(): React.ReactNode {
     return (
       <>
         <Router>
           <Routes>
-            <Route exact={true} path="/" component={IndexPage} />
+            <Route exact path="/" element={<IndexPage get="random" />} />
           </Routes>
         </Router>
       </>
