@@ -8,6 +8,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 // @ts-ignore
 import { IndexPage } from "./components/index.tsx";
+// @ts-ignore
+import { InitPage } from "./components/init.tsx";
 import "./index.css";
 
 class App extends React.Component {
@@ -21,7 +23,8 @@ class App extends React.Component {
         <div className="ui container">
           <Router>
             <Routes>
-              <Route exact path="/" element={<IndexPage get="random" />} />
+              <Route exact path="/" element={<IndexPage/>} />
+              <Route path="/init" element={<InitPage/>} />
             </Routes>
           </Router>
         </div>
