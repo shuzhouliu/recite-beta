@@ -4,6 +4,7 @@
  * Code is served under the MIT license.
  */
 import React from "react";
+import { Link } from "react-router-dom";
 
 type StateType = {
   poem_text: string;
@@ -55,6 +56,8 @@ class IndexPage extends React.Component {
             </div>
           </div>
         </div>
+
+        <Link to="/init">&gt; 开始</Link>
       </>
     );
   }
