@@ -47,9 +47,7 @@ class IndexPage extends React.Component {
         <div className="ui cards">
           <div className="card">
             <div className="content">
-              <div className="header">
-                诗词推荐
-              </div>
+              <div className="header">诗词推荐</div>
               <div className="description">
                 {this.state.poem_text}
                 <br />
