@@ -29,23 +29,34 @@ class IndexPage extends React.Component {
   }
   constructor(props: any) {
     super(props);
-        fetch("https://v1.jinrishici.com/all.json", {
-            method: "GET"
-        }).then(res => res.json()).then(data => {
-            this.setState({
-                poem_text: data.content,
-                poem_origin: data.author+"《"+data.origin+"》"
-            });
-        });
+    fetch("https://v1.jinrishici.com/all.json", {
+      method: "GET"
+    }).then(res => res.json()).then(data => {
+      this.setState({
+        poem_text: data.content,
+        poem_origin: data.author + "《" + data.origin + "》"
+      });
+    });
   }
   render(): React.ReactNode {
-      return (
-        <>
-          {this.state.poem_text}
-          <br />
-          ——{this.state.poem_origin}
-        </>
-      );
+    return (
+      <>
+        <div className="ui cards">
+          <div className="card">
+            <div className="content">
+              <div className="header">
+                诗词推荐
+              </div>
+              <div className="description">
+                {this.state.poem_text}
+                <br />
+                ——{this.state.poem_origin}
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
   }
 }
 

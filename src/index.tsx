@@ -18,11 +18,13 @@ class App extends React.Component {
   render(): React.ReactNode {
     return (
       <>
-        <Router>
-          <Routes>
-            <Route exact path="/" element={<IndexPage get="random" />} />
-          </Routes>
-        </Router>
+        <div className="ui container">
+          <Router>
+            <Routes>
+              <Route exact path="/" element={<IndexPage get="random" />} />
+            </Routes>
+          </Router>
+        </div>
       </>
     );
   }
