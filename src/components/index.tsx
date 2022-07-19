@@ -31,12 +31,14 @@ class IndexPage extends React.Component {
     super(props);
     fetch("https://v1.jinrishici.com/all.json", {
       method: "GET"
-    }).then(res => res.json()).then(data => {
-      this.setState({
-        poem_text: data.content,
-        poem_origin: data.author + "《" + data.origin + "》"
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          poem_text: data.content,
+          poem_origin: data.author + "《" + data.origin + "》"
+        });
       });
-    });
   }
   render(): React.ReactNode {
     return (
@@ -44,9 +46,7 @@ class IndexPage extends React.Component {
         <div className="ui cards">
           <div className="card">
             <div className="content">
-              <div className="header">
-                诗词推荐
-              </div>
+              <div className="header">诗词推荐</div>
               <div className="description">
                 {this.state.poem_text}
                 <br />
