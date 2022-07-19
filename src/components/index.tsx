@@ -57,7 +57,9 @@ class IndexPage extends React.Component {
           </div>
         </div>
 
-        <Link to="/init">&gt; 开始</Link>
+        <Link to="/init" className="white">
+          &gt; 开始
+        </Link>
       </>
     );
   }

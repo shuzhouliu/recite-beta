@@ -23,8 +23,8 @@ class App extends React.Component {
         <div className="ui container">
           <Router>
             <Routes>
-              <Route exact path="/" element={<IndexPage/>} />
-              <Route path="/init" element={<InitPage/>} />
+              <Route exact path="/" element={<IndexPage />} />
+              <Route path="/init" element={<InitPage />} />
             </Routes>
           </Router>
         </div>
