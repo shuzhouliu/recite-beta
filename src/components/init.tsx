@@ -5,6 +5,8 @@
  */
 import React from "react";
 import { Link } from "react-router-dom";
+// @ts-ignore
+import { write } from "./writeFile.tsx";
 
 type InitState = {
   input_method: string;
@@ -57,7 +59,40 @@ class InitPage extends React.Component {
         </div>
       );
     } else {
-      return <div>ocr</div>;
+      return (
+        <>
+          <div className="white">
+            我们检测到您使用了<b>图片上传</b>模式，请上传您的背诵内容。
+            <br />
+            我们为您提供了<b>实时预览</b>，您可以随时查看和编辑。
+            <div className="ui grid">
+              <div className="eight wide column">
+                <b>图片上传</b><br />
+                <div className="ui form field">
+                  <input type="file" id="file_input" accept="image/*" />
+                </div><br />
+                <button type="button" className="ui primary button" onClick={() => {
+                  var reader = new FileReader();
+                  reader.readAsDataURL(document.getElementById("file_input")!.files![0]);
+                  reader.onload = () => {
+                    write("../../pre_ocr.txt", reader.result);
+                  }
+                }}>上传并预览</button>
+              </div>
+              <div className="eight wide column">
+                <b>实时预览</b><br />
+                <div className="ui form field">
+                  <textarea id="preview" rows={10}></textarea>
+                </div>
+              </div>
+            </div>
+            <button className="ui primary button">开始背诵</button>&nbsp;&nbsp;
+            <Link to="/" className="ui button">
+              返回
+            </Link>
+          </div>
+        </>
+      );
     }
   }
   render(): React.ReactNode {
